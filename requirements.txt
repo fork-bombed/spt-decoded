@@ -1,0 +1,9 @@
+certifi==2022.6.15
+charset-normalizer==2.1.0
+docutils==0.19
+idna==3.3
+Kivy==2.1.0
+Kivy-Garden==0.1.5
+Pygments==2.12.0
+requests==2.28.1
+urllib3==1.26.11

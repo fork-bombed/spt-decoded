@@ -1,0 +1,244 @@
+<Label>
+    font_name: "VCR"
+
+<PixButton>
+    background_color: 0,0,0,0
+    on_press: root.pixel_press(self)
+    on_release: root.pixel_release(self)
+    
+    Image:
+        id: image
+        source: "assets/button.png"
+        width: self.parent.width
+        height: self.parent.height
+        center_x: self.parent.center_x - (self.width/2000)
+        center_y: self.parent.center_y - (self.height/2000)
+
+
+<TicketWindow>
+    RelativeLayout:
+        canvas.before:
+            Color:
+                rgba: 75/255, 29/255, 63/255, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 70, 0
+            spacing: 50
+
+            Label:
+                text: "Decode SPT card"
+                font_size: 92
+
+            TextInput:
+                id: bytes_input
+                border: 10,10,10,10
+                multiline: True
+                font_size: 52
+                font_name: "VCR"
+                background_color: 68/255, 26/255, 57/255, 1
+                foreground_color: 254/255, 117/255, 26/255, 1
+                selection_color: 254/255, 117/255, 26/255, 0.3
+                padding_x: 10, 10
+                hint_text: "Enter bytes..."
+
+            GridLayout:
+                cols: 2
+                spacing: 50,50
+                padding: 350,30
+
+                PixButton:
+                    on_press: root.decode()
+                    Label:
+                        text: "Decode"
+                        font_size: 72
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y + self.height * 0.3
+
+                PixButton:
+                    on_press: root.clear_text()
+                    Label:
+                        text: "Clear"
+                        font_size: 72
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y + self.height * 0.3
+
+<TicketView>
+    RelativeLayout:
+        canvas.before:
+            Color:
+                rgba: 75/255, 29/255, 63/255, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Image:
+                size_hint: 1.8, 1
+                source: "assets/ticket.png"
+                font_size: 92
+
+                Label:
+                    id: fare_type
+                    font_size: 92
+                    color: 0,0,0,1
+                    text: "ADULT"
+                    pos: 620, 550
+
+                Label:
+                    id: journey_type
+                    font_size: 92
+                    color: 0,0,0,1
+                    text: "RETURN"
+                    pos: 1000, 550
+
+                BoxLayout:
+                    orientation: "vertical"
+                    pos: 600, 250
+                    padding: 0,0,100,0
+                    spacing: 40
+                    valign: "left"
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 122,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "UID:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: uid
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "05 77 33 99 11 33 22"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 104,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "FARE:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: fare
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "ADULT"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 50,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "JOURNEY:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: journey
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "RETURN"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+                    
+                    GridLayout:
+                        cols: 2
+                        spacing: 50,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "STATION:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: station
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "Unknown"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 15,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "USES LEFT:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: uses
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "0"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 106,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "HASH:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: hash
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "00 00 00 00 00 00 00 00"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+            
+        PixButton:
+            size_hint: .1,.1
+            pos_hint: {"top":.98, "right":.11}
+            on_press: 
+                root.manager.transition.direction = "right"
+                root.manager.current = "main"
+            Label:
+                text: "Back"
+                font_size: 48
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y + self.height * 0.15

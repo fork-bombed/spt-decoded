@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="95.747 113.618 328.153 212.449" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="mask-0">
+      <rect style="stroke: rgb(0, 0, 0); paint-order: stroke; stroke-opacity: 0; fill: rgb(234, 234, 234);" x="96.084" y="113.922" width="327.25" height="212.009" rx="10" ry="10"/>
+    </mask>
+  </defs>
+  <rect style="stroke: rgb(0, 0, 0); paint-order: stroke; stroke-opacity: 0; fill: rgb(234, 234, 234);" x="96.084" y="113.922" width="327.25" height="212.009" rx="10" ry="10"/>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(254, 127, 12); paint-order: fill; stroke-opacity: 0; mask: url(#mask-0);" cx="108.503" cy="317.918" rx="77.029" ry="77.029"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(252, 136, 44);" cx="132.924" cy="149.437" rx="26" ry="26"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(58, 54, 51);" cx="132.9" cy="149.4" rx="18" ry="18"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(234, 234, 234);" cx="132.9" cy="149.4" rx="10" ry="10"/>
+</svg>
