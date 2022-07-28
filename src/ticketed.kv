@@ -52,7 +52,7 @@
                 padding: 350,30
 
                 PixButton:
-                    on_press: root.decode()
+                    on_release: root.decode()
                     Label:
                         text: "Decode"
                         font_size: 72
@@ -60,7 +60,7 @@
                         center_y: self.parent.center_y + self.height * 0.3
 
                 PixButton:
-                    on_press: root.clear_text()
+                    on_release: root.clear_text()
                     Label:
                         text: "Clear"
                         font_size: 72
@@ -100,7 +100,7 @@
 
                 BoxLayout:
                     orientation: "vertical"
-                    pos: 600, 250
+                    pos: 600, 200
                     padding: 0,0,100,0
                     spacing: 40
                     valign: "left"
@@ -167,6 +167,48 @@
                             size_hint_x: None
                             size: self.texture_size
                             pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 104,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "COST:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: cost
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "£0.00"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                    GridLayout:
+                        cols: 2
+                        spacing: 104,0
+
+                        Label:
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "DATE:"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
+
+                        Label:
+                            id: date
+                            font_size: 30
+                            color: 0,0,0,1
+                            text: "01 JAN 97"
+                            size_hint_x: None
+                            size: self.texture_size
+                            pos_hint: {"right":1}
                     
                     GridLayout:
                         cols: 2
@@ -212,12 +254,12 @@
 
                     GridLayout:
                         cols: 2
-                        spacing: 106,0
+                        spacing: 15,0
 
                         Label:
                             font_size: 30
                             color: 0,0,0,1
-                            text: "HASH:"
+                            text: "SIGNATURE:"
                             size_hint_x: None
                             size: self.texture_size
                             pos_hint: {"right":1}
@@ -234,7 +276,7 @@
         PixButton:
             size_hint: .1,.1
             pos_hint: {"top":.98, "right":.11}
-            on_press: 
+            on_release: 
                 root.manager.transition.direction = "right"
                 root.manager.current = "main"
             Label:

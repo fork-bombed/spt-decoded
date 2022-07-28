@@ -45,7 +45,9 @@ class TicketWindow(Screen):
         self.manager.screens[1].ids.journey_type.text = ticket.journey_type.upper()
         self.manager.screens[1].ids.uid.text = ticket.uid
         self.manager.screens[1].ids.fare.text = ticket.fare_type.capitalize()
+        self.manager.screens[1].ids.cost.text = ticket.cost
         self.manager.screens[1].ids.journey.text = ticket.journey_type.capitalize()
+        self.manager.screens[1].ids.date.text = ticket.date.strftime('%d %b %y')
         self.manager.screens[1].ids.station.text = ticket.last_station
         self.manager.screens[1].ids.uses.text = str(ticket.uses_left)
         self.manager.screens[1].ids.hash.text = ticket.hash
