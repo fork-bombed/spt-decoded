@@ -1,18 +1,11 @@
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
-from kivy.uix.scatter import Scatter
 from kivy.core.window import Window
-from kivy.graphics.svg import Svg
+from kivy.uix.popup import Popup
 from spt import Ticket
-
-class SvgWidget(Scatter):
-    filename = ""
-    def __init__(self):
-        super(SvgWidget, self).__init__()
-        with self.canvas:
-            svg = Svg(self.filename)
-        self.size = svg.width, svg.height
+from scan import nfc_scan
 
 class PixButton(Button):
     offset = 20
@@ -51,11 +44,28 @@ class TicketWindow(Screen):
         self.manager.screens[1].ids.station.text = ticket.last_station
         self.manager.screens[1].ids.uses.text = str(ticket.uses_left)
         self.manager.screens[1].ids.hash.text = ticket.hash
+    def popup_scan(self):
+        button = Button(text='close')
+        popup = Popup(
+            title='Flipper Zero Integration',
+            size_hint=(.5,.5),
+        )
+        text = 'Use your flipper to read the card and save the file (any name) for the program to read the bytes. Press "Scan" to start the process.'
+        txt = Label(text=text, text_size = (700, None))
+        button = Button(text='Scan',size_hint=(.4,None),pos_hint={'right':1})
+        button.bind(on_press=popup.dismiss)
+        layout = BoxLayout(orientation='vertical',spacing=10)
+        layout.add_widget(txt)
+        layout.add_widget(button)
+        popup.content = layout
+        popup.bind(on_dismiss=self.scan_card)
+        popup.open()
+    def scan_card(self, instance=None):
+        scanned_data = nfc_scan()
+        if scanned_data is not None:
+            self.ids.bytes_input.text = scanned_data
+            self.decode()
 
 
 class TicketView(Screen):
     pass
-
-# class TicketWindow(Widget):
-#     def clear_text(self):
-#         self.ids.bytes_input.text = ''

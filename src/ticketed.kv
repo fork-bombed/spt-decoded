@@ -47,9 +47,9 @@
                 hint_text: "Enter bytes..."
 
             GridLayout:
-                cols: 2
+                cols: 3
                 spacing: 50,50
-                padding: 350,30
+                padding: 250,30
 
                 PixButton:
                     on_release: root.decode()
@@ -63,6 +63,14 @@
                     on_release: root.clear_text()
                     Label:
                         text: "Clear"
+                        font_size: 72
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y + self.height * 0.3
+
+                PixButton:
+                    on_release: root.scan_card()
+                    Label:
+                        text: "Scan"
                         font_size: 72
                         center_x: self.parent.center_x
                         center_y: self.parent.center_y + self.height * 0.3
